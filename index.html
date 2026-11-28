@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Mini World" />
+    <meta name="application-name" content="Mini World" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2" />
+    <link rel="icon" type="image/png" href="icons/icon-192.png?v=2" />
+    <title>Mini World</title>
+    <meta name="description" content="Playable prototype of Sushi Boat, an idle arcade sushi boat restaurant game." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Mochiy+Pop+One&display=swap" rel="stylesheet" />
+    <style>html,body{touch-action:none;background:radial-gradient(circle at 50% 30%,#1d2a44,#0b1020);height:100%;margin:0;overflow:hidden}#game{width:100%;height:100%}</style>
+    <script type="module" crossorigin src="./assets/index-BkO-Aanf.js"></script>
+  </head>
+  <body>
+    <main id="game"></main>
+    <script>
+      (function () {
+        function show(msg) {
+          var d = document.getElementById('boot-error');
+          if (!d) {
+            d = document.createElement('pre');
+            d.id = 'boot-error';
+            d.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;margin:0;padding:10px 12px;background:#fff3f0;color:#7a2318;font:13px/1.4 monospace;white-space:pre-wrap;border-radius:10px;z-index:9999';
+            document.body.appendChild(d);
+          }
+          d.textContent += 'Something went wrong: ' + msg + '\n';
+        }
+        addEventListener('error', function (e) { show((e.message || 'load error') + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : '')); });
+        addEventListener('unhandledrejection', function (e) { show(String(e.reason && (e.reason.stack || e.reason))); });
+      })();
+    </script>
+  </body>
+</html>
